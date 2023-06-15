@@ -3,14 +3,22 @@ import { Icon } from 'astro-icon';
 ---
 
 <footer data-testid="footer" class="p-6 text-center text-sm text-black dark:text-tan">
-	<div class="socials fixed bottom-0 left-0 mb-10 ml-10 hidden lg:flex lg:flex-col lg:gap-6">
-		<a href="https://github.com/arrabisPiolo" target="_blank" rel="noopener" aria-label="github"
+	<div
+		class="hidden-section socials fixed bottom-0 left-0 mb-10 ml-10 hidden lg:flex lg:flex-col lg:gap-6"
+	>
+		<a
+			class="logo"
+			href="https://github.com/arrabisPiolo"
+			target="_blank"
+			rel="noopener"
+			aria-label="github"
 			><Icon
 				class="h-7 duration-300 hover:scale-105 hover:transform hover:text-orange dark:hover:text-orange"
 				name="simple-icons:github"
 			/></a
 		>
 		<a
+			class="logo"
 			href="https://www.linkedin.com/in/piolo-arrabis/"
 			target="_blank"
 			rel="noopener"
@@ -22,6 +30,7 @@ import { Icon } from 'astro-icon';
 		>
 
 		<a
+			class="logo"
 			href="https://www.facebook.com/Delacruzpiolo/"
 			target="_blank"
 			rel="noopener"
@@ -42,3 +51,17 @@ import { Icon } from 'astro-icon';
 		</a>
 	</p>
 </footer>
+
+<style>
+	.hidden-section {
+		opacity: 0;
+		filter: blur(5px);
+		transform: translateY(100%);
+		transition: all 2s;
+	}
+	.show {
+		opacity: 1;
+		filter: blur(0px);
+		transform: translateX(0%);
+	}
+</style>
