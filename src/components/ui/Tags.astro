@@ -1,0 +1,23 @@
+---
+export interface Props {
+	tags?: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{
+	tags && (
+		<div class="mt-2 flex w-2/3 flex-row flex-wrap justify-center gap-6">
+			{tags.map((tag, index) => (
+				<span
+					class={`text-orange inline-block py-2 text-lg lg:py-1 ${
+						index !== tags.length - 1 ? 'border-r-2 border-gray-500 pr-8' : ''
+					}`}
+				>
+					{tag}
+				</span>
+			))}
+		</div>
+	)
+}

@@ -1,0 +1,79 @@
+---
+import { Icon } from 'astro-icon';
+import { Image } from '@astrojs/image/components';
+import Tags from '@components/ui/Tags.astro';
+interface Props {
+	url?: string;
+	alt?: string;
+	description?: string;
+	key?: number;
+	title?: string;
+	images?: string;
+	sourceCode?: string;
+	tags: string[];
+	children?: HTMLElement | HTMLElement[];
+}
+
+const {
+	url = '#',
+	key = 1,
+	alt = 'Project image',
+	title = 'Project title',
+	sourceCode = 'A source',
+	description = 'A description',
+	images = 'Images',
+	tags = ['Tags'],
+} = Astro.props;
+---
+
+<section class="mb-7 lg:mx-20">
+	<article
+		data-testId="card"
+		class="shadow-lg hover:shadow-xl flex rounded-xl bg-white p-3 shadow-3xl duration-500 hover:scale-105 hover:transform dark:bg-dkblue dark:shadow-bshadow"
+	>
+		<div
+			class={`flex flex-col items-center overflow-hidden gap-6 ${
+				key % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+			}`}
+		>
+			<Image
+				class="h-auto w-full rounded-xl shadow-3xl"
+				src={images}
+				alt={alt}
+				aspectRatio="16:9"
+				format="png"
+				width={533.33}
+				height={300}
+				loading="eager"
+			/>
+
+			<div class="mt-1 flex flex-col items-center justify-center">
+				<h3 class="text-center text-xl font-bold text-orange lg:text-2xl">{title}</h3>
+				<p class="flex px-7 pt-6 text-center text-[#3b3939] dark:text-tan">{description}</p>
+				<Tags tags={tags} />
+				<div class="mt-5 flex gap-3 font-semibold">
+					<a
+						href={sourceCode}
+						target="_blank"
+						class="flex items-center gap-3 text-[#4d4c4c] transition-colors duration-300 hover:text-orange dark:text-tan dark:hover:text-orange"
+					>
+						<Icon class="h-8" name="simple-icons:github" />
+						Code
+					</a>
+
+					{
+						key !== 3 && (
+							<a
+								class="shadow-3xl hover:bg-orange  dark:bg-orange  dark:text-dkblue  rounded-lg  border border-solid bg-white p-2 text-[#4d4c4c]  transition-colors duration-300 hover:text-white dark:border-black dark:hover:bg-[#f77e4d]	"
+								href={url}
+								target="_blank"
+							>
+								Live Demo
+							</a>
+						)
+					}
+				</div>
+			</div>
+		</div>
+	</article>
+</section>

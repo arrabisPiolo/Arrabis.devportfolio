@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<footer data-testid="footer" class="p-6 text-center text-sm text-black dark:text-tan">
+	<div class="socials fixed bottom-0 left-0 mb-10 ml-10 hidden lg:flex lg:flex-col lg:gap-6">
+		<a href="https://github.com/arrabisPiolo" target="_blank" rel="noopener" aria-label="github"
+			><Icon
+				class="h-7 duration-300 hover:scale-105 hover:transform hover:text-orange dark:hover:text-orange"
+				name="simple-icons:github"
+			/></a
+		>
+		<a
+			href="https://www.linkedin.com/in/piolo-arrabis/"
+			target="_blank"
+			rel="noopener"
+			aria-label="linkedin"
+			><Icon
+				class="h-7 duration-300 hover:scale-105 hover:transform hover:text-orange dark:hover:text-orange"
+				name="simple-icons:linkedin"
+			/></a
+		>
+
+		<a
+			href="https://www.facebook.com/Delacruzpiolo/"
+			target="_blank"
+			rel="noopener"
+			aria-label="facebook"
+			><Icon
+				class="h-7 duration-300 hover:scale-105 hover:transform hover:text-orange dark:hover:text-orange"
+				name="simple-icons:facebook"
+			/></a
+		>
+	</div>
+	<p>
+		Copyright © {new Date().getFullYear()}. All rights reserved. Made by <a
+			href="https://github.com/arrabisPiolo"
+			target="_blank"
+			rel="noopener"
+		>
+			<span class="text-orange"> Piolo Arrabis</span>
+		</a>
+	</p>
+</footer>

@@ -1,0 +1,159 @@
+---
+import Social from '@components/ui/Social.astro';
+import copybutton from '@assets/images/copy-bold.svg';
+import { Image } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+---
+
+<section
+	data-testid="contact"
+	id="contact"
+	class="hidden-section text-black dark:text-tan lg:mb-0 lg:h-screen"
+>
+	<div class="flex flex-col rounded-xl bg-white dark:bg-dkblue dark:shadow-bshadow lg:flex-row">
+		<div class="m-8 flex flex-col lg:w-1/2">
+			<div class="mb-6 self-center text-center">
+				<p class="text-2xl font-bold text-orange">Have a question or want to work together?</p>
+				<span>Feel free to reach out!</span>
+			</div>
+
+			<form
+				class="flex w-full flex-col gap-4 text-tan"
+				action="https://formsubmit.co/arrabis178@gmail.com"
+				method="POST"
+			>
+				<input
+					type="text"
+					name="name"
+					required
+					placeholder="Name"
+					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+				/>
+				<input
+					type="email"
+					name="email"
+					required
+					placeholder="Email"
+					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+				/>
+				<textarea
+					name="message"
+					rows="10"
+					placeholder="Write your message here..."
+					class="resize-y rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+				></textarea>
+				<input type="hidden" name="_next" value="http://localhost:3000/#contact" />
+				<input type="hidden" name="_template" value="table" />
+				<input type="hidden" name="_captcha" value="false" />
+				<button
+					type="submit"
+					class="self-center rounded-lg border border-solid bg-orange p-2 px-5 font-bold text-black shadow-3xl transition-colors duration-300 hover:bg-[#f77e4d] hover:text-white dark:border-black dark:bg-orange dark:text-dkblue dark:hover:bg-[#f77e4d]"
+					>Send</button
+				>
+			</form>
+		</div>
+		<div class="m-8 flex flex-col items-center justify-center text-center lg:w-1/2">
+			<h1 class="text-3xl font-bold text-orange">Thank you for visiting my Porfolio!</h1>
+			<br />
+			<span
+				>Thank you for taking the time to explore my porftfolio. I appreaciate your interest in my
+				work and the opportunity to share my skills and accomplishments with you. If you have any
+				questions or would like to discuss potential collaborations, please don't hesitate to reach
+				out. I look forward to connecting with you!
+			</span>
+			<br />
+			<h1 class="text-3xl font-bold text-orange">Contact me</h1>
+			<div class="flex flex-col items-center justify-center gap-2">
+				<a
+					class="flex gap-2 hover:text-orange"
+					href="https://www.linkedin.com/in/piolo-arrabis/"
+					target="_blank"
+				>
+					<Icon class="h-7" name="mdi:linkedin" />
+					<span> Piolo Arrabis</span>
+				</a>
+
+				<div class="flex gap-2">
+					<Icon class="h-7" name="mdi:cellphone" />
+					<span>0938-717-3486</span>
+				</div>
+
+				<span class="flex cursor-pointer gap-2 hover:text-orange" id="copyText">
+					<Icon class="h-7" name="mdi:email" />
+
+					Arrabis1708@gmail.com <Image
+						src={copybutton}
+						alt="html logo"
+						width={30}
+						height={30}
+						loading="eager"
+					/>
+					<button id="copyButton"> </button></span
+				>
+				<div class="flex gap-2">
+					<Icon class="h-7" name="ic:baseline-place" />
+					<span> Quezon City, Philippines</span>
+				</div>
+
+				<hr class="mt-3 w-full" />
+				<div class="my-4 flex flex-row gap-8 lg:hidden">
+					<Social />
+				</div>
+			</div>
+		</div>
+
+		<style>
+			.hidden-section {
+				opacity: 0;
+				filter: blur(5px);
+				transform: translateX(-100%);
+				transition: all 2s;
+			}
+			.show {
+				opacity: 1;
+				filter: blur(0px);
+				transform: translateX(0%);
+			}
+		</style>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const copyText = document.getElementById('copyText');
+				const copyButton = document.getElementById('copyButton');
+
+				function copyToClipboard(text) {
+					const textarea = document.createElement('textarea');
+					textarea.value = text;
+					document.body.appendChild(textarea);
+					textarea.select();
+					textarea.setSelectionRange(0, 99999);
+					document.execCommand('copy');
+					document.body.removeChild(textarea);
+				}
+
+				function resetButton() {
+					if (!copyButton) return;
+					copyButton.textContent = '';
+				}
+
+				if (copyText && copyButton) {
+					copyText.addEventListener('click', () => {
+						const textToCopy = copyText.textContent;
+						copyToClipboard(textToCopy);
+						copyButton.textContent = 'Copied!';
+
+						setTimeout(resetButton, 2000);
+					});
+
+					copyButton.addEventListener('click', () => {
+						const textToCopy = copyText.textContent;
+						copyToClipboard(textToCopy);
+						copyButton.textContent = 'Copied!';
+
+						setTimeout(resetButton, 2000);
+					});
+				}
+			});
+		</script>
+	</div>
+</section>

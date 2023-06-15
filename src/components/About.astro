@@ -1,0 +1,111 @@
+---
+import LottieAnimation from 'astro-integration-lottie/Lottie.astro';
+---
+
+<section
+	data-testid="about"
+	id="about"
+	class="hidden-section about mb-10 flex flex-col items-center justify-center lg:mb-0 lg:h-screen lg:flex-row"
+>
+	<div class="mb-10 flex w-full flex-col items-center justify-center lg:mb-0 lg:w-1/2">
+		<h2 class="font-monospace text-2xl text-orange lg:text-4xl">About me</h2>
+		<span class="mb-8 h-1 w-48 bg-orange"></span>
+
+		<div class="container z-30 h-96 w-96 cursor-pointer">
+			<LottieAnimation src="./laptop.json" autoplay="visible" />
+		</div>
+	</div>
+
+	<div
+		class="flex w-full flex-col items-center justify-center text-justify text-black dark:text-tan lg:w-1/2"
+	>
+		<p id="firstParagraph" class="hidden-section mb-2">
+			Hello, I'm Piolo Arrabis, a highly skilled web developer with extensive experience in the
+			field. Over the years, I have honed my expertise through working with prominent tech
+			companies. With a deep understanding of programming languages, frameworks, and best practices,
+			I am adept at creating efficient, scalable, and visually stunning web solutions. My background
+			in working with big tech companies has exposed me to a fast-paced, innovative environment,
+			enabling me to thrive in challenging projects and collaborate effectively with
+			cross-functional teams.
+
+			<br />
+			<br />
+			During my free time, I enjoy coding and exploring the world of web development. I specialize in
+			front-end development and have a strong command of HTML, CSS, JavaScript, and React. These technologies
+			have allowed me to bring my creative ideas to life and build visually appealing and interactive
+			websites. (Please click the button below)
+		</p>
+		<p id="secondParagraph" class="hidden-section hidden">
+			This is the reality.
+
+			<br />
+			<br />
+			Hello, I'm Piolo Arrabis, a recent graduate from Our Lady of Fatima University with no prior experience
+			in the industry and only a few personal projects under my belt.
+
+			<br />
+			<br />
+			Over the past few months, I have dedicated my time to learning and working on personal projects.
+			And yes, its true, I do specialize in front-end development and have just a decent grasp of HTML,
+			CSS, JavaScript, and React. These technologies have allowed me to bring my creative ideas to life
+			and build visually appealing and interactive websites by searching the internet for visual reference
+			and then combine them to create my own work.
+
+			<br />
+			<br />
+			I am eager to secure a job opportunity and put my skills into practice. Your consideration would
+			be greatly appreciated as I am actively seeking employment. Thank you for considering me for any
+			relevant positions. I hope that my approach hasn't caused you to lose interest.
+			<br />
+			<br />
+			Please hire me, I need a Job.
+		</p>
+		<div
+			id="toggleButton"
+			class="mt-5 flex cursor-pointer items-center rounded-xl bg-white px-5 font-bold shadow-3xl transition-colors duration-300 hover:bg-orange dark:bg-dkblue dark:hover:bg-[#373f4a]"
+		>
+			<div class="h-14 w-14">
+				<LottieAnimation src="./eyes-animation.json" autoplay="visible" />
+			</div>
+			<span class="reveal-span pl-3">Reveal</span>
+			<span class="return-span hidden pl-3">Return</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hidden-section {
+		opacity: 0;
+		filter: blur(5px);
+		transform: translateX(-100%);
+		transition: all 2s;
+	}
+	.show {
+		opacity: 1;
+		filter: blur(0px);
+		transform: translateX(0%);
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const toggleButton = document.getElementById('toggleButton');
+		const firstParagraph = document.querySelector('#firstParagraph');
+		const secondParagraph = document.querySelector('#secondParagraph');
+
+		if (toggleButton && firstParagraph && secondParagraph) {
+			toggleButton.addEventListener('click', function () {
+				firstParagraph.classList.toggle('hidden');
+				secondParagraph.classList.toggle('hidden');
+
+				const revealSpan = toggleButton.querySelector('.reveal-span');
+				const returnSpan = toggleButton.querySelector('.return-span');
+
+				if (revealSpan && returnSpan) {
+					revealSpan.classList.toggle('hidden');
+					returnSpan.classList.toggle('hidden');
+				}
+			});
+		}
+	});
+</script>

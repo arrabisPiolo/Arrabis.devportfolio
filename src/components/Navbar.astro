@@ -1,0 +1,113 @@
+---
+import Button from '@components/ui/Button.astro';
+import ToggleTheme from '@components/ui/ToggleTheme.astro';
+import { Astronav, MenuIcon, MenuItems } from 'astro-navbar';
+
+const menuitems = [
+	{
+		title: 'About',
+		path: '#about',
+	},
+	{
+		title: 'Projects',
+		path: '#projects',
+	},
+	{
+		title: 'Contact',
+		path: '#contact',
+	},
+];
+---
+
+<header
+	data-testId="header"
+	id="navbar"
+	class="blur-5 my-5 flex -translate-y-full flex-col items-center justify-between opacity-0 transition-all delay-1000 duration-1000 lg:flex-row"
+>
+	<Astronav>
+		<div class="flex w-full items-center justify-between lg:w-auto">
+			<a
+				href="#hero"
+				aria-label="navigation link"
+				class="text-3xl font-bold text-black dark:text-tan"
+			>
+				Piolo <span class="text-orange dark:text-orange">Arrabis</span>
+			</a>
+
+			<div class="block lg:hidden">
+				<MenuIcon class="h-4 w-4 text-black dark:text-white" />
+			</div>
+		</div>
+
+		<MenuItems class="mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto">
+			<ul class="flex flex-col items-center lg:flex-row lg:gap-3">
+				{
+					menuitems.map((item) => (
+						<>
+							<li>
+								<a
+									aria-label="navigation link"
+									href={item.path}
+									class="menu-item hover:text-orange dark:text-tan dark:hover:text-orange flex py-2 text-black lg:px-3"
+								>
+									{item.title}
+								</a>
+							</li>
+						</>
+					))
+				}
+
+				<li>
+					<ToggleTheme />
+				</li>
+			</ul>
+		</MenuItems>
+	</Astronav>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const link = document.getElementById('navbar');
+			if (link !== null) {
+				link.classList.remove('delay-1000');
+				void link.offsetWidth;
+				link.classList.add('opacity-100', 'blur-0', 'translate-y-0');
+			}
+		});
+	</script>
+
+	<style>
+		.hidden-section {
+			opacity: 0;
+			filter: blur(5px);
+			transform: translateX(-100%);
+			transition: all 1s;
+		}
+		.show {
+			opacity: 1;
+			filter: blur(0px);
+			transform: translateX(0%);
+		}
+		.menu-item {
+			position: relative;
+			transition: border-bottom 0.3s;
+		}
+
+		.menu-item::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 50%;
+			width: 0;
+			height: 2px;
+			background-color: transparent;
+			transition: width 0.4s ease-in-out, left 0.4s ease-in-out, background-color 0.4s ease-in-out;
+		}
+
+		.menu-item:hover::after {
+			width: 100%;
+			left: 0;
+			background-color: #e06330;
+			transition: width 0.4s ease-in-out, left 0.4s ease-in-out, background-color 0.4s ease-in-out;
+		}
+	</style>
+</header>
