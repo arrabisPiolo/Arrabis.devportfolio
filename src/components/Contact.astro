@@ -47,8 +47,8 @@ import { Icon } from 'astro-icon';
 				<input type="hidden" name="_captcha" value="false" />
 				<button
 					type="submit"
-					class="self-center rounded-lg border border-solid bg-orange p-2 px-5 font-bold text-black shadow-3xl transition-colors duration-300 hover:bg-[#f77e4d] hover:text-white dark:border-black dark:bg-orange dark:text-dkblue dark:hover:bg-[#f77e4d]"
-					>Send</button
+					class="flex items-center gap-1 self-center rounded-lg border border-solid bg-orange p-2 px-5 font-bold text-black shadow-3xl transition-colors duration-300 hover:bg-[#f77e4d] hover:text-white dark:border-black dark:bg-orange dark:text-dkblue dark:hover:bg-[#f77e4d]"
+					>Send <Icon class="h-4" name="fluent:send-20-filled" /></button
 				>
 			</form>
 		</div>
@@ -72,11 +72,6 @@ import { Icon } from 'astro-icon';
 					<Icon class="h-7" name="mdi:linkedin" />
 					<span> Piolo Arrabis</span>
 				</a>
-
-				<div class="flex gap-2">
-					<Icon class="h-7" name="mdi:cellphone" />
-					<span>0938-717-3486</span>
-				</div>
 
 				<span class="flex cursor-pointer gap-2 hover:text-orange" id="copyText">
 					<Icon class="h-7" name="mdi:email" />
