@@ -5,5 +5,5 @@ description: Tracoin is a website that allows users to explore for information a
 img_alt: project image alt text
 sourceCode: https://github.com/arrabisPiolo/TraCoin
 link: https://tra-coin.vercel.app/
-tags: ['React', 'CSS']
+tags: ['React', 'SCSS']
 ---
