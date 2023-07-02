@@ -27,22 +27,26 @@ import { Icon } from 'astro-icon';
 					name="name"
 					required
 					placeholder="Name"
-					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:text-white dark:placeholder:text-[#756c59]"
 				/>
 				<input
 					type="email"
 					name="email"
 					required
 					placeholder="Email"
-					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+					class="h-10 rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:text-white dark:placeholder:text-[#756c59]"
 				/>
 				<textarea
 					name="message"
 					rows="10"
 					placeholder="Write your message here..."
-					class="resize-y rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:placeholder:text-[#756c59]"
+					class="resize-y rounded-md border border-solid border-[#9ba2a8] bg-white p-3 text-black placeholder:text-[#6c757d] dark:border-tan dark:bg-dkblue dark:text-white dark:placeholder:text-[#756c59]"
 				></textarea>
-				<input type="hidden" name="_next" value="http://localhost:3000/#contact" />
+				<input
+					type="hidden"
+					name="_next"
+					value="https://arrabis-devportfolio.vercel.app/#contact"
+				/>
 				<input type="hidden" name="_template" value="table" />
 				<input type="hidden" name="_captcha" value="false" />
 				<button
